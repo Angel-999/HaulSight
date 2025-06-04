@@ -1,0 +1,17 @@
+<div *ngIf="filteredItem">
+  <h2>Carrier Info</h2>
+  <p><strong>Name:</strong> {{ filteredItem.legalName }}</p>
+  <p><strong>USDOT Number:</strong> {{ filteredItem.dotNumber }}</p>
+  <p><strong>Status Code:</strong> {{ filteredItem.statusCode }}</p>
+  <p><strong>Phone:</strong> N/A</p> <!-- Not available in response -->
+  <p><strong>Address:</strong>
+    {{ filteredItem.phyStreet }}, 
+    {{ filteredItem.phyCity }}, 
+    {{ filteredItem.phyState }} 
+    {{ filteredItem.phyZipcode }}
+  </p>
+</div>
+
+<div *ngIf="!filteredItem">
+  <p>No carrier data yet... 🔍</p>
+</div>

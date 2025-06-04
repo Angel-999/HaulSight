@@ -1,0 +1,13 @@
+<form class="example-form" (ngSubmit)="goToSearch()">
+  <mat-form-field class="example-full-width">
+    <input
+      matInput
+      placeholder="Search Broker or Carrier"
+      [(ngModel)]="searchQuery"
+      name="searchInput"
+      required
+    />
+  </mat-form-field>
+  
+  <button mat-flat-button color="primary" type="submit" (click)="goToSearch()">Search</button>
+</form>
