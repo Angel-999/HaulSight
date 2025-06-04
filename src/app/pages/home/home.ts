@@ -4,10 +4,11 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import { Router } from '@angular/router';
+import {MatIconModule} from '@angular/material/icon';
 
 @Component({
   selector: 'app-home',
-  imports: [MatInputModule, MatFormFieldModule, FormsModule, MatButtonModule],
+  imports: [MatInputModule, MatFormFieldModule, FormsModule, MatButtonModule, MatIconModule],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })
@@ -17,10 +18,29 @@ searchQuery: string = '';
   constructor(private router: Router) {}
 
 goToSearch() {
-  const query = this.searchQuery.trim();
+  let query = this.searchQuery.trim();
+  let type = 'name'; // default
+  // Detect and handle "MC" or "MX" with digits
+  const mcMxMatch = query.match(/^(MC|MX)[\s-]*(\d{6,})$/i);
+  if (mcMxMatch) {
+    // Extract only the last 6 digits
+    const digits = mcMxMatch[2].slice(-6);
+    query = digits;
+    type = 'docket';
+  } else {
+    // Remove "MC" prefix generally if present (and not matched above)
+    query = query.replace(/^MC\s*/i, '');
+
+    if (/^\d{1,6}$/.test(query)) {
+      type = 'docket';
+    } else if (/^\d{6,8}$/.test(query)) {
+      type = 'usdot';
+    }
+  }
+
   if (!query) return;
 
-  let type = 'name'; // default
+
 
 
   // Detect Docket: usually all digits, length between 1-6 (example)

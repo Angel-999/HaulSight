@@ -1,4 +1,7 @@
+
 <form class="example-form" (ngSubmit)="goToSearch()">
+  <h2 class="logo-text">Search</h2>
+  <p>By USDOT, MC/MX, or Name</p>
   <mat-form-field class="example-full-width">
     <input
       matInput
@@ -7,7 +10,13 @@
       name="searchInput"
       required
     />
+    <button
+      matIconButton
+      matSuffix
+      (click)="goToSearch()"
+    >
+    <mat-icon>search</mat-icon>
+    </button>
   </mat-form-field>
-  
-  <button mat-flat-button color="primary" type="submit" (click)="goToSearch()">Search</button>
 </form>
+<div class="background"></div>

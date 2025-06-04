@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';  // <-- Add this
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,21 +13,24 @@ import { HttpClientModule } from '@angular/common/http';
   styleUrl: './search.css'
 })
 export class Search implements OnInit {
+  nosearch = false;
   items: any[] = [];
-filteredItem: any = null;
+  filteredItem: any = null;
   webKey: string = 'ce8453b4abbdd6b60e7b2f16481dc42000194f81';
-  constructor(private route: ActivatedRoute, private http: HttpClient) { }
+  constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router) { }
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       const searchType = params['type'] || '';
       const searchTerm = params['q'] || '';
-      console.log('Sexy search type:', searchType, 'term:', searchTerm);
-
       // Now use searchTerm to filter or query your data
       this.searchItems(searchType,searchTerm);
     });
   }
 searchItems(type: string, term: string) {
+  if(!term && !type){
+    this.router.navigateByUrl('');
+    return;
+  }
   if (!term) {
       this.filteredItem = null;
     return;
