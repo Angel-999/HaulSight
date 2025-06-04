@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { Search } from './search';\nexport const SEARCH_ROUTES = [{\n  path: '',\n  component: Search\n}];","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}

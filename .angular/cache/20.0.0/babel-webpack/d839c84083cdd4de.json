@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { Contact } from './contact';\nexport const CONTACT_ROUTES = [{\n  path: '',\n  component: Contact\n}];","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}
