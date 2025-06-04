@@ -49,9 +49,11 @@ searchItems(type: string, term: string) {
 }
 
 callNameApi(name: string) {
-  this.http.get<any[]>(`https://mobile.fmcsa.dot.gov/qc/services/name?q=${encodeURIComponent(name)}`)
+  this.http.get<any>(`https://mobile.fmcsa.dot.gov/qc/services/carriers/name/${encodeURIComponent(name)}?webKey=${encodeURIComponent(this.webKey)}`)
     .subscribe(data => {
-      this.filteredItem = data;
+      const results = data.content?.filter((item: any) => item.carrier.allowedToOperate === 'Y') || [];
+      this.filteredItem = results.map((item: any) => item.carrier);
+      this.filteredItem = this.filteredItem[0];
     }, error => {
       console.error('Error fetching by name:', error);
     });
@@ -59,18 +61,18 @@ callNameApi(name: string) {
 callUSDOTApi(usdot: string) {
   this.http.get<any>(`https://mobile.fmcsa.dot.gov/qc/services/carriers/${encodeURIComponent(usdot)}?webKey=${encodeURIComponent(this.webKey)}`)
     .subscribe(data => {
-      console.log('🔥 API response for name:', data);  // <--- Right here, baby
       this.filteredItem = data.content.carrier;
     }, error => {
       console.error('Error fetching by USDOT:', error);
     });
 }
 callDocketApi(docket: string) {
-  this.http.get<any[]>(`https://yourapi.com/search/docket?q=${encodeURIComponent(docket)}`)
+  this.http.get<any>(`https://mobile.fmcsa.dot.gov/qc/services/carriers/docket-number/${encodeURIComponent(docket)}?webKey=${encodeURIComponent(this.webKey)}`)
     .subscribe(data => {
-      this.filteredItem = data;
+      console.log(data);
+      this.filteredItem = data.content[0].carrier;
     }, error => {
-      console.error('Error fetching by docket:', error);
+      console.error('Error fetching by USDOT:', error);
     });
 }
 }

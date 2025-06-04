@@ -67,14 +67,14 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "target": "HaulSight:build"
+            "buildTarget": "HaulSight:build"
           },
           "configurations": {
             "production": {
-              "target": "HaulSight:build:production"
+              "buildTarget": "HaulSight:build:production"
             },
             "development": {
-              "target": "HaulSight:build:development"
+              "buildTarget": "HaulSight:build:development"
             }
           },
           "defaultConfiguration": "development"

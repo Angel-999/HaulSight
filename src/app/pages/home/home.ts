@@ -22,15 +22,15 @@ goToSearch() {
 
   let type = 'name'; // default
 
-  // Detect USDOT: usually all digits, length between 6-8 (example)
-  if (/^\d{6,8}$/.test(query)) {
-    type = 'usdot';
-  } 
-  // Detect docket: maybe alphanumeric starting with letters? Customize as needed
-  else if (/^[a-zA-Z]{1,3}\d{1,6}$/.test(query)) {
+
+  // Detect Docket: usually all digits, length between 1-6 (example)
+  if (/^\d{1,6}$/.test(query)) {
     type = 'docket';
   }
-
+  // Detect USDOT: usually all digits, length between 6-8 (example)
+  else if (/^\d{6,8}$/.test(query)) {
+    type = 'usdot';
+  } 
   this.router.navigate(['/search'], { queryParams: { type, q: query } });
 }
 
