@@ -1,0 +1,14 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+a{
+  text-decoration: none;
+  color: white;
+}
+.progress-bar{
+  position: fixed;
+  top: var(--mat-toolbar-standard-height, 64px);
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+}

@@ -1,5 +1,6 @@
 <mat-toolbar>
-  <a href="/home">
+
+  <a routerLink="/">
     <span class="logo-text">HaulSight</span>
   </a>
   <span class="example-spacer"></span>
@@ -9,4 +10,8 @@
   <button matIconButton class="example-icon" aria-label="Example icon-button with share icon">
     <mat-icon>share</mat-icon>
   </button>
+
 </mat-toolbar>
+@if (isLoading) {
+<mat-progress-bar mode="query" class="progress-bar"></mat-progress-bar>
+}
