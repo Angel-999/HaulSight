@@ -1,0 +1,1 @@
+import{Sa as n,gb as a,hb as c,zb as p}from"./chunk-5M7NGYD3.js";var t=class o{static \u0275fac=function(e){return new(e||o)};static \u0275cmp=n({type:o,selectors:[["app-contact"]],decls:2,vars:0,template:function(e,i){e&1&&(a(0,"p"),p(1,"contact works!"),c())},encapsulation:2})};var u=[{path:"",component:t}];export{u as CONTACT_ROUTES};
