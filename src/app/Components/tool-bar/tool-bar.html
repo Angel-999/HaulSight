@@ -1,0 +1,26 @@
+<mat-toolbar class="example-toolbar">
+
+  <!-- LEFT -->
+  <div class="toolbar-left">
+    <a routerLink="/">
+      <h1 class="logo-text">HAUL SIGHT</h1>
+    </a>
+  </div>
+
+  <!-- CENTER -->
+  <div class="toolbar-center">
+    <app-search-bar></app-search-bar>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="toolbar-right">
+    <a routerLink="contact" class="button contact">
+      <p>Contact Us</p>
+    </a>
+  </div>
+
+</mat-toolbar>
+
+@if (isLoading) {
+  <mat-progress-bar mode="query" class="progress-bar"></mat-progress-bar>
+}

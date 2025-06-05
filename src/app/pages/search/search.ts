@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { ToolBarService } from '../tool-bar/tool-bar.service';
+import { ToolBarService } from '../../Components/tool-bar/tool-bar.service';
 
 
 @Component({

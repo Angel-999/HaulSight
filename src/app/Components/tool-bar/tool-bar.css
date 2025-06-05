@@ -1,0 +1,127 @@
+.example-toolbar {
+  padding: 25px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .toolbar-left,
+  .toolbar-right {
+    display: flex;
+    align-items: center;
+  }
+
+  .toolbar-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+a{
+  text-decoration: none;
+  color: white;
+
+}
+.logo-text{
+  font-size: 1em;
+  font-weight: bold;
+}
+.progress-bar{
+  position: fixed;
+  top: var(--mat-toolbar-standard-height, 64px);
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+}
+.example-toolbar {
+  background: rgba(0, 0, 0, 0.219);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.19);
+  
+}
+p{
+  font-size:medium;
+  text-decoration: underline;
+}
+.button {
+  margin: 10px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.button {
+  --primary-color: white;
+  --hovered-color: var(--mat-sys-primary);
+  position: relative;
+  display: flex;
+  font-size: medium;
+  align-items: center;
+}
+
+.button p {
+  text-decoration: none;
+  margin: 0;
+  position: relative;
+  font-size: medium;
+  color: var(--primary-color);
+}
+
+.button::after {
+  position: absolute;
+  content: "";
+  width: 0;
+  left: 0;
+  bottom: -2px;
+  background: var(--hovered-color);
+  height: 2px;
+  transition: 0.15s ease-out;
+}
+.Carriers p::before {
+  position: absolute;
+  /*   box-sizing: border-box; */
+  content: "Carriers";
+  width: 0%;
+  inset: 0;
+  color: var(--hovered-color);
+  overflow: hidden;
+  transition: 0.15s ease-out;
+}
+.Brokers p::before {
+  position: absolute;
+  /*   box-sizing: border-box; */
+  content: "Brokers";
+  width: 0%;
+  inset: 0;
+  color: var(--hovered-color);
+  overflow: hidden;
+  transition: 0.15s ease-out;
+}
+.contact p::before {
+  position: absolute;
+  /*   box-sizing: border-box; */
+  content: "Contact Us";
+  width: 0%;
+  inset: 0;
+  color: var(--hovered-color);
+  overflow: hidden;
+  transition: 0.15s ease-out;
+}
+
+.button:hover::after {
+  width: 100%;
+}
+
+.button:hover p::before {
+  width: 100%;
+}
+@media screen and (max-width: 800px) {
+  
+  .example-toolbar {
+  padding: 20px 5px;
+
+  
+}
+}

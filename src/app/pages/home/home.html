@@ -1,22 +1,13 @@
 
-<form class="example-form" (ngSubmit)="goToSearch()">
+<img src="images/truck.png" class="truck">
+<div class="circle"></div>
+<div class="circle two"></div>
+<div  style="position: fixed; top: 25%; left: 50%; transform: translate(-50%, -50%); text-align: center; width: 264px;" >
+  <h1 style="margin-bottom: 0;">GET TO KNOW YOUR PARTNERS </h1>
+  <p style="margin-top: 4px;">Search for any Carrier or Broker</p>
+</div>
+<form class="example-form">
   <h2 class="logo-text">Search</h2>
-  <p>By USDOT, MC/MX, or Name</p>
-  <mat-form-field class="example-full-width">
-    <input
-      matInput
-      placeholder="Search Broker or Carrier"
-      [(ngModel)]="searchQuery"
-      name="searchInput"
-      required
-    />
-    <button
-      matIconButton
-      matSuffix
-      (click)="goToSearch()"
-    >
-    <mat-icon>search</mat-icon>
-    </button>
-  </mat-form-field>
+  <app-search-bar></app-search-bar>
 </form>
 <div class="background"></div>

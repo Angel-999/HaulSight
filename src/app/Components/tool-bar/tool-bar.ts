@@ -6,6 +6,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { ToolBarService } from './tool-bar.service';
+import { SearchBar } from "../search-bar/search-bar";
 @Component({
   selector: 'app-tool-bar',
   imports: [
@@ -13,8 +14,9 @@ import { ToolBarService } from './tool-bar.service';
     MatButtonModule,
     MatToolbarModule,
     RouterModule,
-    MatProgressBarModule
-  ],
+    MatProgressBarModule,
+    SearchBar
+],
   templateUrl: './tool-bar.html',
   styleUrl: './tool-bar.css'
 })

@@ -4,35 +4,93 @@
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1; /* Push behind the content */
-  background: radial-gradient(circle at center, #173d3d, #0b0e0e);
+  z-index: -10; /* Push behind the content */
+  background: radial-gradient(circle at center, #06262C, #0D1618);
+}
+.circle{
+  position: fixed;
+  top: 25%;
+  left: 20%;
+  width: 0px;
+  height: 0px;
+  z-index: -6; /* Push behind the content */
+  background: #59D4D2;
+  box-shadow: #59D4D2 0px 0px 700px 110px;
+}
+.two{
+  position: fixed;
+  top: 75%;
+  left: 80%;
+  width: 0px;
+  height: 0px;
+  z-index: -6; /* Push behind the content */
+  background: #FC814A;
+  box-shadow: #FC814A 0px 0px 700px 110px;
+}
+.truck{
+  position: fixed;
+  /*tile image*/
+  background-repeat: repeat;
+
+  width: 400px;
+  top: 65%;
+  left: 48%;
+  transform: translate(-50%, -50%);
+  z-index: -5; /* Push behind the content */
+}
+@media screen and (max-width: 800px) {
+.circle{
+  position: fixed;
+  top: 15%;
+  left: 10%;
+  width: 0px;
+  height: 0px;
+  z-index: -6; /* Push behind the content */
+  background: #59D4D2;
+  box-shadow: #59D4D2 0px 0px 200px 75px;
+}
+.two{
+  position: fixed;
+  top: 85%;
+  left: 90%;
+  width: 0px;
+  height: 0px;
+  z-index: -6; /* Push behind the content */
+  background: #FC814A;
+  box-shadow: #FC814A 0px 0px 200px 100px;
+}
+
+
+.truck{
+  width: 300px;
+}
+  
 }
 .logo-text{
-  margin-bottom: 0.1em;
-}
-P{
-  font-size: small;
-  margin-top: 0;
+  margin-left: 16px;
+  margin-bottom: 8px;
 }
 form {
   /* Center the form on the page */
-  margin: 25dvh auto;
-  width: 400px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
   /* Form outline */
-  padding: 1em 1em 2em 1em;
+  padding: 0 15px 25px 15px;
   border-radius: 1em;
-  /* From https://css.glass */
-background: rgba(255, 255, 255, 0.07);
-border-radius: 16px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(12.8px);
--webkit-backdrop-filter: blur(12.8px);
-border: 1px solid rgba(255, 255, 255, 0.19);
+  background: rgba(0, 0, 0, 0.219);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.19);
 }
 
 .example-form {
-  min-width: 40%;
-  max-width: 85%;
+  min-width: 30%;
+  max-width: 90%;
 }
 
 .example-full-width {
