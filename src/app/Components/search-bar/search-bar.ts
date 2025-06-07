@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { ToolBarService } from '../../Components/tool-bar/tool-bar.service';
 
@@ -14,12 +14,23 @@ import { ToolBarService } from '../../Components/tool-bar/tool-bar.service';
   styleUrl: './search-bar.css'
 })
 export class SearchBar {
-searchQuery: string = '';
+  searchQuery: string = '';
+  private lastSearch: { query: string, type: string } = { query: '', type: '' };
 
-  constructor(private router: Router, private toolBarService: ToolBarService) { }
- ngOnInit(): void {
-   this.toolBarService.setSearching(false);
- }
+  constructor(private router: Router, private route: ActivatedRoute, private toolBarService: ToolBarService) { }
+  ngOnInit(): void {
+    this.toolBarService.setSearching(false);
+
+    // Pull search query from URL if it exists
+    this.route.queryParams.subscribe(params => {
+      if (params['q']) {
+        this.searchQuery = params['q'];
+      }
+      else {
+        this.searchQuery = '';
+      }
+    });
+  }
   goToSearch() {
     let query = this.searchQuery.trim();
     let type = 'name'; // default
@@ -44,8 +55,13 @@ searchQuery: string = '';
     if (!query) return;
 
 
+    if (this.lastSearch.query === query && this.lastSearch.type === type) {
+      this.toolBarService.setSearching(false);
+      return;
+    }
 
-
+    this.lastSearch = { query, type };
+    this.toolBarService.setSearching(true);
     // Detect Docket: usually all digits, length between 1-6 (example)
     if (/^\d{1,6}$/.test(query)) {
       type = 'docket';
@@ -54,6 +70,11 @@ searchQuery: string = '';
     else if (/^\d{6,8}$/.test(query)) {
       type = 'usdot';
     }
-    this.router.navigate(['/search'], { queryParams: { type, q: query } });
+    // Navigate based on type
+    if (type === 'name') {
+      this.router.navigate(['/search'], { queryParams: { type, q: query } });
+    } else {
+      this.router.navigate(['/profile'], { queryParams: { type, q: query } });
+    }
   }
 }

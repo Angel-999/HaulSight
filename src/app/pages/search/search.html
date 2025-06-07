@@ -1,16 +1,49 @@
-<div *ngIf="filteredItem">
-  <h2>Carrier Info</h2>
-  <p><strong>Name:</strong> {{ filteredItem.legalName }}</p>
-  <p><strong>USDOT Number:</strong> {{ filteredItem.dotNumber }}</p>
-  <p><strong>Status Code:</strong> {{ filteredItem.statusCode }}</p>
-  <p><strong>Address:</strong>
-    {{ filteredItem.phyStreet }}, 
-    {{ filteredItem.phyCity }}, 
-    {{ filteredItem.phyState }} 
-    {{ filteredItem.phyZipcode }}
-  </p>
+@if (filteredItems.length === 0) {
+@if (stillSearching) {
+<!-- Actual visible placeholder cards -->
+<div class="card-container">
+  <ng-container *ngFor="let _ of [].constructor(placeholderCount)">
+    <mat-card appearance="outlined" class="card placeholder-card">
+      <mat-card-header class="card-header">
+        <mat-card-title class="skeleton card-title placeholder-text" style="width: 300px;">Loading...</mat-card-title>
+        <mat-card-subtitle class="skeleton placeholder-text" style="width: 500px; margin-top: 4px;">Address
+          info</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-footer class="example-card-footer">
+        <mat-chip-set>
+          <mat-chip class="skeleton button">USDOT#</mat-chip>
+        </mat-chip-set>
+      </mat-card-footer>
+    </mat-card>
+  </ng-container>
 </div>
+}
+@else {
+<app-result [searchTerm]="searchTerm"></app-result>
+}
 
-<div *ngIf="!filteredItem">
-  <p>Searching for {{ searchTerm }}🔍</p>
+
+}
+@else {
+<div class="card-container">
+  <ng-container *ngFor="let item of filteredItems">
+    <mat-card appearance="outlined" class="card">
+      <mat-card-header class="card-header">
+        <mat-card-title class="card-title">
+          <a [routerLink]="['/profile']" [queryParams]="{ type: 'usdot', q: item.dotNumber }">
+            {{ item.legalName }}
+          </a>
+        </mat-card-title>
+        <mat-card-subtitle>
+          {{ item.phyStreet }}, {{ item.phyCity }}, {{ item.phyState }} {{ item.phyZipcode }}
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-footer class="example-card-footer">
+        <mat-chip-set>
+          <mat-chip>USDOT# {{ item.dotNumber }}</mat-chip>
+        </mat-chip-set>
+      </mat-card-footer>
+    </mat-card>
+  </ng-container>
 </div>
+}

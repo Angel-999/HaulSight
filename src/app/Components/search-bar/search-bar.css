@@ -5,14 +5,14 @@
   border: 1px solid #ccc;
   border-radius: 99px;
   overflow: hidden;
-  height: 40px;
+  height: 48px;
 }
 input{
   color: white;
   background-color: transparent;
   padding: 0 0 0 20px;
   border: none;
-  height: 40px;
+  height: 48px;
   width: 100%;
 }
 input::placeholder{
@@ -29,6 +29,11 @@ input:focus{
     border-color: lightgray;
   }
 .search-button{
+  height: 48px;
+  width: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: lightgray;
 }
 input:-internal-autofill-selected {

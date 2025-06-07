@@ -1,0 +1,12 @@
+<div>
+  <h2>Carrier Profile</h2>
+  <p><strong>Name:</strong> {{ filteredItem.legalName }}</p>
+  <p><strong>USDOT Number:</strong> {{ filteredItem.dotNumber }}</p>
+  <p><strong>Status Code:</strong> {{ filteredItem.statusCode }}</p>
+  <p><strong>Address:</strong>
+    {{ filteredItem.phyStreet }},
+    {{ filteredItem.phyCity }},
+    {{ filteredItem.phyState }}
+    {{ filteredItem.phyZipcode }}
+  </p>
+</div>
