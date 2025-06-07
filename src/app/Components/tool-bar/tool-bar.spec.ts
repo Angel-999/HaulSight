@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ToolBar } from './tool-bar';
 
 describe('ToolBar', () => {
