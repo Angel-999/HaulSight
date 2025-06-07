@@ -3,20 +3,37 @@
   position: fixed;
   top: 0;
   height: 86px !important;
-  padding: 25px 25px;
+  padding: 25px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: rgba(0, 0, 0, 0.219);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.19);
+
   .toolbar-left,
   .toolbar-right {
+    padding: 8px;
     display: flex;
     align-items: center;
+    flex: 0 0 auto;
+
+  }
+  .toolbar-right {
+    padding: 0;
   }
 
   .toolbar-center {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  .search-bar {
+    width: 100%;
+    max-width: 600px;
   }
 }
 ::ng-deep mat-toolbar {
